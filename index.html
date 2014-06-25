@@ -8,7 +8,6 @@
 			width: 15px;
 			height: 15px;
 			border-radius: 100%;
-			background-color: red;
 			/*position: relative;*/
 			left: 10px;
 			text-align: center;
@@ -188,26 +187,30 @@
 		}, 
 		createBall = function(player) {
 			var ball = document.createElement('div');
-			ball.className = "ball ball" + player.points;
-			ball.style.border = (player.points*10) + "px solid red";
+			ball.className = "ball ballPlayer" + player.number.toString() + player.points;
+			ball.style.border = (player.points*10) + "px solid " + player.color;
 			ball.style.animation = "animationBall" + parseInt(Math.random()*3) + " " + ((20-player.points >= 1) ? 20-player.points : 1) + "s linear 0s infinite alternate";
 			ball.style['-webkit-animation'] = "animationBall" + parseInt(Math.random()*3) + " " + ((20-player.points >= 1) ? 20-player.points : 1) + "s linear 0s infinite alternate";
+			ball.style['background-color'] = player.color;
 			document.getElementById('war-field').appendChild(ball);
 			putChar(ball, player.chars);
 		}, 
-		player = function(chars){
+		Player = function(number, chars, color){
 			this.points = 0;
 			this.chars = chars;
+			this.color = color;
+			this.number = number;
+			createBall(this);
 		}, 
-		player1 = new player(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]), 
-		playerList = [player1];
-		createBall(player1);
+		player1 = new Player("1", ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"], "rgba(255, 0, 71, .7)"),
+		player2 = new Player("2", ["N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"], "rgba(71, 0, 255, .7)")
+		playerList = [player1, player2];
 		document.addEventListener("keypress", function(key){
 			var i = playerList.length;
 			while(i--){
-				var ball = document.querySelector(".ball" + playerList[i].points + " p");
+				var ball = document.querySelector(".ballPlayer" + playerList[i].number + playerList[i].points + " p");
 				if (ball.innerHTML === (String.fromCharCode(key.keyCode)).toUpperCase()){
-					document.getElementsByClassName("ball"+player1.points)[0].innerHTML = "";
+					document.getElementsByClassName("ballPlayer" + playerList[i].number + playerList[i].points)[0].innerHTML = "";
 					playerList[i].points++;
 					createBall(playerList[i]);
 				}
