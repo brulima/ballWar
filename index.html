@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ball War!</title>
+	<style>
+		.ball {
+				width: 30px;
+				height: 30px;
+				border-radius: 100%;
+				background-color: red;
+				/*position: relative;*/
+				left: 10em;
+				text-align: center;
+				color: white;
+				font-family: sans-serif;
+				font-size: 12px;
+			}
+		@supports (animation-name: animationBall) {
+			.ball{
+				position: relative;
+			}
+			.ball0 {
+				animation: animationBall0 5s linear 0s infinite alternate;
+			}
+			.ball1 {
+				animation: animationBall1 5s linear 0s infinite alternate;	
+			}
+			@keyframes animationBall0 {
+				0% {
+					top: 10em;
+					left: 30em;
+				}
+				30% {
+					top: 2em;
+					left: 1em;
+				}
+				60% {
+					top: 37em;
+					left: 14em;
+				}
+				100% {
+					top: 25em;
+					left: 45em;
+				}
+			}
+			@keyframes animationBall1 {
+				0% {
+					top: 20em;
+					left: 1em;
+				}
+				30% {
+					top: 47em;
+					left: 77em;
+				}
+				60% {
+					top: 2em;
+					left: 54em;
+				}
+				100% {
+					top: 25em;
+					left: 1em;
+				}
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="oponents"></div>
+		<div class="oponents"></div>
+	</header>
+	<section id="war-field"></section>
+	<script>
+		var putChar = function(ball, chars){
+			var value = chars[Math.round(Math.random()*10)]
+			ball.innerHTML = "<p>" + value + "</p>";
+
+		}, 
+		createBall = function(player) {
+			var ball = document.createElement('div');
+			ball.className = "ball ball" + player.points;
+			document.getElementById('war-field').appendChild(ball);
+			putChar(ball, player.chars);
+		}, 
+		player = function(chars){
+			this.points = 0;
+			this.chars = chars;
+		}, 
+		player1 = new player(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]), 
+		playerList = [player1];
+		createBall(player1);
+		document.addEventListener("keypress", function(key){
+			var i = playerList.length;
+			while(i--){
+				var ball = document.querySelector(".ball" + playerList[i].points + " p");
+				if (ball.innerHTML === (String.fromCharCode(key.keyCode)).toUpperCase()){
+					playerList[i].points++;
+					createBall(playerList[i]);
+				}
+			}
+		});
+	</script>
+</body>
+</html>
