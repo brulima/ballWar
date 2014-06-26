@@ -1,0 +1,64 @@
+header {
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	background-color: white;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.18));
+	padding: 10px;
+}
+body {
+	padding: 0;
+	margin: 0;
+}
+.ball {
+	width: 22px;
+	height: 22px;
+	border-radius: 100%;
+	/*position: relative;*/
+	left: 10px;
+	text-align: center;
+	color: white;
+	font-family: sans-serif;
+	font-size: 12px;
+	position: fixed;
+}
+.oponents {
+	width: 49%;
+	height: 30px;
+	display: inline-table;
+	text-align: center;
+	font-family: sans-serif;
+}
+.oponents div {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22));
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.oponents div div {
+	height: 30px;
+	width: 0;
+	margin: 0;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.28));
+}
+#player1BarField {
+	background-color: rgb(255, 0, 71);
+}
+#player2BarField {
+	background-color: rgb(71, 0, 255);
+}
+#win {
+	font-family: sans-serif;
+	font-size: 60px;
+	font-weight: lighter;
+	color: white;
+	text-shadow: black 2px 2px 10px;
+	animation: winAnimation 3s;
+	-webkit-animation: winAnimation 3s;
+}
+#war-field {
+	text-align: center;
+	padding: 20%;
+}
+p {
+	margin: 0;
+	font-size: 20px;
+}
