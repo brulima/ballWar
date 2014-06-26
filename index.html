@@ -274,6 +274,7 @@
 		win = function(player) {
 			document.getElementsByTagName('body')[0].style['background-color'] = player.color.replace(".7", "1");
 			document.getElementById('war-field').innerHTML = '<p id="win">Jogador ' + player.number + ' venceu!</p>';
+			ga('send', 'event', 'ballWar', 'finish', 'player' + player.number);
 		}, 
 		Player = function(number, chars, color){
 			this.points = 0;
