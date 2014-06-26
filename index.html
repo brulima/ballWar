@@ -4,9 +4,21 @@
 	<meta charset="UTF-8">
 	<title>Ball War!</title>
 	<style>
+		header {
+			position: fixed;
+			z-index: 9999;
+			width: 100%;
+			background-color: white;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.18));
+			padding: 10px;
+		}
+		body {
+			padding: 0;
+			margin: 0;
+		}
 		.ball {
-			width: 15px;
-			height: 15px;
+			width: 22px;
+			height: 22px;
 			border-radius: 100%;
 			/*position: relative;*/
 			left: 10px;
@@ -16,16 +28,61 @@
 			font-size: 12px;
 			position: fixed;
 		}
+		.oponents {
+			width: 49%;
+			height: 30px;
+			display: inline-table;
+			text-align: center;
+			font-family: sans-serif;
+		}
+		.oponents div {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22));
+			border: 1px solid rgba(0, 0, 0, 0.1);
+		}
+		.oponents div div {
+			height: 30px;
+			width: 0;
+			margin: 0;
+			background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.28));
+		}
+		#player1BarField {
+			background-color: rgb(255, 0, 71);
+		}
+		#player2BarField {
+			background-color: rgb(71, 0, 255);
+		}
+		#win {
+			font-family: sans-serif;
+			font-size: 60px;
+			font-weight: lighter;
+			color: white;
+			text-shadow: black 2px 2px 10px;
+			animation: winAnimation 3s;
+			-webkit-animation: winAnimation 3s;
+		}
+		#war-field {
+			text-align: center;
+			padding: 20%;
+		}
 		p {
 			margin: 0;
+			font-size: 20px;
 		}
-		.ball0 {
-			animation: animationBall0 5s linear 0s infinite alternate;
-			-webkit-animation: animationBall0 5s linear 0s infinite alternate;
+		@keyframes winAnimation {
+			from {
+				font-size: 40px;
+			}
+			to {
+				font-size: 60px;
+			}
 		}
-		.ball1 {
-			animation: animationBall1 5s linear 0s infinite alternate;
-			-webkit-animation: animationBall1 5s linear 0s infinite alternate;
+		@-webkit-keyframes winAnimation {
+			from {
+				font-size: 40px;
+			}
+			to {
+				font-size: 60px;
+			}
 		}
 		@keyframes animationBall0 {
 			0% {
@@ -175,13 +232,23 @@
 </head>
 <body>
 	<header>
-		<div class="oponents"></div>
-		<div class="oponents"></div>
+		<div class="oponents">
+			<p id="player1Points">0</p>
+			<div id="player1Bar">
+				<div id="player1BarField"></div>
+			</div>
+		</div>
+		<div class="oponents">
+			<p id="player2Points">0</p>
+			<div id="player2Bar">
+				<div id="player2BarField"></div>
+			</div>
+		</div>
 	</header>
 	<section id="war-field"></section>
 	<script>
 		var putChar = function(ball, chars){
-			var value = chars[parseInt(Math.random()*10)]
+			var value = chars[parseInt(Math.random()*13)]
 			ball.innerHTML = "<p>" + value + "</p>";
 
 		}, 
@@ -195,11 +262,16 @@
 			document.getElementById('war-field').appendChild(ball);
 			putChar(ball, player.chars);
 		}, 
+		win = function(player) {
+			document.getElementsByTagName('body')[0].style['background-color'] = player.color.replace(".7", "1");
+			document.getElementById('war-field').innerHTML = '<p id="win">Jogador ' + player.number + ' venceu!</p>';
+		}, 
 		Player = function(number, chars, color){
 			this.points = 0;
 			this.chars = chars;
 			this.color = color;
 			this.number = number;
+			this.sumPoints = 0;
 			createBall(this);
 		}, 
 		player1 = new Player("1", ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"], "rgba(255, 0, 71, .7)"),
@@ -208,11 +280,27 @@
 		document.addEventListener("keypress", function(key){
 			var i = playerList.length;
 			while(i--){
-				var ball = document.querySelector(".ballPlayer" + playerList[i].number + playerList[i].points + " p");
+				var points = playerList[i].points,
+					ball = document.querySelector(".ballPlayer" + playerList[i].number + points + " p");
 				if (ball.innerHTML === (String.fromCharCode(key.keyCode)).toUpperCase()){
-					document.getElementsByClassName("ballPlayer" + playerList[i].number + playerList[i].points)[0].innerHTML = "";
+					document.getElementsByClassName("ballPlayer" + playerList[i].number + points)[0].innerHTML = "";
 					playerList[i].points++;
+					points++;
 					createBall(playerList[i]);
+
+					if (points <= 10) playerList[i].sumPoints += points;
+					else if (points <= 16) playerList[i].sumPoints += (points + 1);
+					else if (points <= 20) playerList[i].sumPoints += (points + 2);
+					else if (points <= 25) playerList[i].sumPoints += (points + 3);
+					else if (points <= 30) playerList[i].sumPoints += (points + 5);
+					else if (points <= 36) playerList[i].sumPoints += (points + 7);
+					else if (points <= 39) playerList[i].sumPoints += (points + 8);
+					else if (points == 40) {
+						playerList[i].sumPoints += 100;
+						win(playerList[i]);
+					}
+					document.getElementById('player'+playerList[i].number+"BarField").style.width = (playerList[i].sumPoints/10)+"%";
+					document.getElementById('player'+playerList[i].number+"Points").innerHTML = playerList[i].sumPoints;
 				}
 			}
 		});
