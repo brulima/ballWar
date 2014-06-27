@@ -30,14 +30,18 @@ body {
 	font-family: sans-serif;
 }
 .oponents div {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22));
+	background-image: linear-gradient(rgba(202, 202, 202, 1), rgba(173, 173, 173, 1));
 	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 2%;
+	margin-left: 7.5%;
+	margin-right: 7.5%;
+	top: 47px;
 }
 .oponents div div {
 	height: 30px;
 	width: 0;
 	margin: 0;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.28));
+	background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.01));
 }
 #player1BarField {
 	background-color: rgb(255, 0, 71);
@@ -61,4 +65,38 @@ body {
 p {
 	margin: 0;
 	font-size: 20px;
+}
+div#player2BarField::before, div#player1BarField::before {
+	content: "";
+	width: 33px;
+	height: 33px;
+	z-index: 60;
+	position: fixed;
+	border-radius: 100%;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0.01));
+	top: 47px;
+}
+div#player2BarField::before {
+	background-color: rgb(71, 0, 255);
+	left: 52.5%;
+}
+div#player1BarField::before {
+	background-color: rgb(255, 0, 71);
+	left: 3.5%;
+}
+div#player1Bar::after, div#player2Bar::after {
+	content: "";
+	width: 33px;
+	height: 33px;
+	position: fixed;
+	background-image: linear-gradient(rgba(202, 202, 202, 1), rgba(173, 173, 173, 1));
+	top: 47px;
+	border-radius: 100%;
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+div#player1Bar::after {
+	left: 44.7%;
+}
+div#player2Bar::after {
+	left: 94%;
 }
