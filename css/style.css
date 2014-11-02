@@ -2,9 +2,8 @@ header {
 	position: fixed;
 	z-index: 9999;
 	width: 100%;
-	background-color: white;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.18));
-	padding: 10px;
+	background-color: rgb(44, 44, 44);
+	border-bottom: 5px solid rgb(34, 34, 34);
 }
 body {
 	padding: 0;
@@ -14,7 +13,6 @@ body {
 	width: 22px;
 	height: 22px;
 	border-radius: 100%;
-	/*position: relative;*/
 	left: 10px;
 	text-align: center;
 	color: white;
@@ -30,8 +28,15 @@ body {
 	font-family: sans-serif;
 }
 .oponents div {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.22));
+	background-color: rgb(34, 34, 34);
 	border: 1px solid rgba(0, 0, 0, 0.1);
+	margin: 5%;
+}
+.oponents p {
+	position: fixed;
+	margin-left: 21%;
+	margin-top: 0.3%;
+	color: white;
 }
 .oponents div div {
 	height: 30px;
