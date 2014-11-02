@@ -11,15 +11,13 @@ body {
 	font-family: sans-serif;
 }
 .description {
-	position: fixed;
-	z-index: 300;
-	width: 100%;
 	background-color: rgb(44, 44, 44);
 	padding: 5% 22% 50% 20%;
 	color: rgb(231, 231, 231);
 }
 .description * {
-	width: 45%;
+	width: 70%;
+	margin-right: 0;
 }
 .description h1 {
 	font-size: 3em;
