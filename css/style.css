@@ -1,6 +1,6 @@
 header {
 	position: fixed;
-	z-index: 9999;
+	z-index: 200;
 	width: 100%;
 	background-color: rgb(44, 44, 44);
 	border-bottom: 5px solid rgb(34, 34, 34);
@@ -8,6 +8,36 @@ header {
 body {
 	padding: 0;
 	margin: 0;
+	font-family: sans-serif;
+}
+.description {
+	position: fixed;
+	z-index: 300;
+	width: 100%;
+	background-color: rgb(44, 44, 44);
+	padding: 5% 22% 50% 20%;
+	color: rgb(231, 231, 231);
+}
+.description * {
+	width: 45%;
+}
+.description h1 {
+	font-size: 3em;
+}
+.description p {
+	margin-top: 1%;
+}
+.description p span {
+	font-weight: bolder;
+	color: rgb(255, 121, 152);
+}
+.jogar {
+	text-align: center;
+}
+.jogar a:link {
+	text-decoration: underline;
+	color: rgb(255, 121, 152);
+	font-size: 3em;
 }
 .ball {
 	width: 22px;
