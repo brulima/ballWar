@@ -14,7 +14,11 @@ createBall = function(player) {
 }, 
 win = function(player) {
 	document.getElementsByTagName('body')[0].style['background-color'] = player.color.replace(".7", "1");
-	document.getElementById('war-field').innerHTML = '<p id="win">Jogador ' + player.number + ' venceu!</p>';
+	document.getElementById('war-field').innerHTML = 
+		'<p class="win">Jogador ' + player.number + ' venceu!</p>' + 
+		'<p class="playagain"><a href="http://brulima.github.io/ballWar/play.html">Jogar novamente</a></p>' +
+		'<p class="playagain">Created by <a href="http://brulima.github.io/">Bruna Lima</a></p>';
+		;
 	ga('send', 'event', 'ballWar', 'finish', 'player' + player.number);
 }, 
 Player = function(number, chars, color){

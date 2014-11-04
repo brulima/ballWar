@@ -12,7 +12,7 @@ body {
 }
 .description {
 	background-color: rgb(44, 44, 44);
-	padding: 5% 22% 50% 20%;
+	padding: 5% 1% 1% 10%;
 	color: rgb(231, 231, 231);
 }
 .description * {
@@ -31,6 +31,9 @@ body {
 }
 .jogar {
 	text-align: center;
+}
+.jogar a:visited {
+	color: rgb(255, 121, 152);
 }
 .jogar a:link {
 	text-decoration: underline;
@@ -78,14 +81,25 @@ body {
 #player2BarField {
 	background-color: rgb(71, 0, 255);
 }
-#win {
+.win {
 	font-family: sans-serif;
-	font-size: 60px;
+	font-size: 70px;
 	font-weight: lighter;
 	color: white;
 	text-shadow: black 2px 2px 10px;
 	animation: winAnimation 3s;
 	-webkit-animation: winAnimation 3s;
+}
+.playagain {
+	font-family: sans-serif;
+	font-weight: lighter;
+	color: white;
+	text-shadow: black 2px 2px 10px;
+	font-size: 30px;
+	margin-top: 10px;
+}
+.playagain a {
+	color: white;
 }
 #war-field {
 	text-align: center;
