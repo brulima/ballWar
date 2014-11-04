@@ -20,7 +20,7 @@ body {
 	margin-right: 0;
 }
 .description h1 {
-	font-size: 3em;
+	font-size: 4em;
 }
 .description p {
 	margin-top: 1%;
@@ -31,14 +31,14 @@ body {
 }
 .jogar {
 	text-align: center;
+	font-size: 4em;
 }
-.jogar a:visited {
+.description a:visited {
 	color: rgb(255, 121, 152);
 }
-.jogar a:link {
+.description a:link {
 	text-decoration: underline;
 	color: rgb(255, 121, 152);
-	font-size: 3em;
 }
 .ball {
 	width: 22px;
