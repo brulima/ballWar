@@ -16,10 +16,16 @@ win = function(player) {
 	document.getElementsByTagName('body')[0].style['background-color'] = player.color.replace(".7", "1");
 	document.getElementById('war-field').innerHTML = 
 		'<p class="win">Jogador ' + player.number + ' venceu!</p>' + 
-		'<p class="playagain"><a href="http://brulima.github.io/ballWar/play.html">Jogar novamente</a></p>' +
-		'<p class="playagain">Created by <a href="http://brulima.github.io/">Bruna Lima</a></p>';
+		'<p class="playagain"><a id="again" href="http://brulima.github.io/ballWar/jogar">Jogar novamente</a></p>' +
+		'<p class="playagain">Created by <a id="portfolio" href="http://brulima.github.io/">Bruna Lima</a></p>';
 		;
-	ga('send', 'event', 'ballWar', 'finish', 'player' + player.number);
+	ga('send', 'event', 'ballWar', 'finish', 'player' + player.number, 100);
+	document.getElementById('portfolio').addEventListener('mousedown', function() {
+		ga('send', 'event', 'ballWar', 'Portfolio', 'Clique');
+	});
+	document.getElementById('again').addEventListener('mousedown', function() {
+		ga('send', 'event', 'ballWar', 'Jogar Novamente', 'Clique');
+	});
 }, 
 Player = function(number, chars, color){
 	this.points = 0;
@@ -54,8 +60,9 @@ document.addEventListener("keypress", function(key){
 				playerList[i].sumPoints += 100;
 				win(playerList[i]);
 			}
-			document.getElementById('player'+playerList[i].number+"BarField").style.width = (playerList[i].sumPoints/10)+"%";
-			document.getElementById('player'+playerList[i].number+"Points").innerHTML = playerList[i].sumPoints;
+			document.getElementById('player' + playerList[i].number + "BarField").style.width = (playerList[i].sumPoints/10) + "%";
+			document.getElementById('player' + playerList[i].number + "Points").innerHTML = playerList[i].sumPoints;
+			ga('send', 'event', 'ballWar', 'Jogada_Player' + i, points, playerList[i].sumPoints);
 		}
 	}
 });

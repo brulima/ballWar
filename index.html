@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
+	<meta content="Jogar em dupla no mesmo computador? Ball War é um jogo de teclado para dois jogadores no mesmo computador." name="description">
 	<title>Ball War!</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="icon" type="image/ico" href="img/favicon.ico" />
@@ -10,11 +11,21 @@
 	<script type="text/javascript" src="js/googleAnalytics.js"></script>
 	<h1>Ball War!</h1>
 	<p>O <span class="1">Ball</span> <span class="2">War!</span> deve ser jogado com dois jogadores <span>no mesmo computador<span>.</p>
-	<p>Cada jogador escolhe uma cor (rosa ou azul). Bolinhas coloridas apareceram andando pela tela, e cada jogador deve apertar no teclado as letras das bolinhas com as cores escolhidas anteriormente <span>ao mesmo tempo<span>.</p>
+	<p>Cada jogador escolhe uma cor (rosa ou azul). Bolinhas azuis e rosas aparecerão pela tela. Cada bolinha tem uma letra. O jogador que escolheu a cor azul deve apertar no teclado as letras das bolinhas azuis e o jogador que escolheu a cor rosa deve apertar no teclado as letras das bolinhas rosas.</p>
+	<p>Quando o jogador apertar a letra de uma bolinha, essa letra sumirá e irá aparecer uma nova bolinha com uma letra diferente. E o jogador deve continuar apertando as letras correspondentes às suas bolinhas</p>
+	<p>O jogador que fizer <span>1000</span> pontos ganha o jogo!</p>
 	<p>O Objetivo real do jogo é acabar em guerra. vale roubar o teclado e sair correndo. Vale cortar o dedo do amigo fora. Vale dedo no olho. Vale xingar a mãe.</p>
 	<p>O <span class="1">Ball</span> <span class="2">War!</span> não se responsabiliza por danos morais e físicos.</p>
 	<p><span>Atenção:</span> para jogar é necessário estar com o teclado conectado.</p>
-	<p class="jogar"><span><a href="jogar">Jogar!</a></span></p>
-	<p> Created by <a href="http://brulima.github.io/">Bruna Lima</a></p>
+	<p class="jogar"><span><a id="jogar" href="jogar">Jogar!</a></span></p>
+	<p> Created by <a id="portfolio" href="http://brulima.github.io/">Bruna Lima</a></p>
+	<script>
+		document.getElementById('portfolio').addEventListener('mousedown', function() {
+			ga('send', 'event', 'ballWar', 'Portfolio', 'Clique');
+		});
+		document.getElementById('jogar').addEventListener('mousedown', function() {
+			ga('send', 'event', 'ballWar', 'Jogar', 'Clique');
+		});
+	</script>
 </body>
 </html>
