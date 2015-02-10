@@ -109,3 +109,7 @@ p {
 	margin: 0;
 	font-size: 20px;
 }
+.esconde {
+	width: 1px;
+	height: auto;
+}
