@@ -7,7 +7,7 @@ createBall = function(player) {
 	ball.className = "ball ballPlayer" + player.number.toString() + player.points;
 	ball.style.border = (player.points*10) + "px solid " + player.color;
 	ball.style.animation = "animationBall" + parseInt(Math.random()*3) + " " + ((20-player.points >= 1) ? 20-player.points : 1) + "s linear 0s infinite alternate";
-	ball.style['-webkit-animation'] = "animationBall" + parseInt(Math.random()*3) + " " + ((20-player.points >= 1) ? 20-player.points : 1) + "s linear 0s infinite alternate";
+	ball.style['-webkit-animation'] = "animationBall" + parseInt(Math.random()*4) + " " + ((20-player.points >= 1) ? 20-player.points : 1) + "s linear 0s infinite alternate";
 	ball.style['background-color'] = player.color;
 	document.getElementById('war-field').appendChild(ball);
 	putChar(ball, player.chars);

@@ -140,7 +140,7 @@
 		left: 69em;
 	}
 }
-@keyframes animationBall3 {
+@-webkit-keyframes animationBall3 {
 	0% {
 		top:30em;
 		left: 88em;
